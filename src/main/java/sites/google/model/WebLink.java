@@ -5,32 +5,32 @@ public class WebLink {
     private String url;
     private String description;
 
-    public String getName() {
+    public final String getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public final void setName(String name) {
         this.name = name;
     }
 
-    public String getUrl() {
+    public final String getUrl() {
         return url;
     }
 
-    public void setUrl(String url) {
+    public final void setUrl(String url) {
         this.url = url;
     }
 
-    public String getDescription() {
+    public final String getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public final void setDescription(String description) {
         this.description = description;
     }
 
     @Override
-    public boolean equals(Object o) {
+    public final boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof WebLink)) return false;
 
@@ -44,7 +44,7 @@ public class WebLink {
     }
 
     @Override
-    public int hashCode() {
+    public final int hashCode() {
         int result = name != null ? name.hashCode() : 0;
         result = 31 * result + (url != null ? url.hashCode() : 0);
         result = 31 * result + (description != null ? description.hashCode() : 0);
@@ -52,7 +52,7 @@ public class WebLink {
     }
 
     @Override
-    public String toString() {
+    public final String toString() {
         final StringBuffer sb = new StringBuffer("WebLink{");
         sb.append("name='").append(name).append('\'');
         sb.append(", url='").append(url).append('\'');

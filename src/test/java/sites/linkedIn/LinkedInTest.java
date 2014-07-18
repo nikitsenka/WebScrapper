@@ -1,21 +1,16 @@
 package sites.linkedIn;
 
-import api.*;
+import api.Page;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.htmlunit.HtmlUnitDriver;
-import selenium.PageImpl;
-import selenium.Utils;
 import sites.linkedIn.model.Person;
 
 import java.util.List;
 
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.StringContains.containsString;
-import static org.junit.Assert.*;
-import static selenium.Utils.copyCurrentPage;
+import static org.junit.Assert.assertThat;
 import static sites.linkedIn.Utils.getWebDriver;
 
 public class LinkedInTest {

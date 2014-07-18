@@ -15,8 +15,8 @@ import java.util.Set;
 public class JsoupTracksParser implements TracksParser {
 
     @Override
-    public Set<Track> getTracks(Page top100Page, int size) throws ParseException {
-        Set<Track> tracks = new LinkedHashSet<Track>();
+    public final Set<Track> getTracks(Page top100Page, int size) throws ParseException {
+        Set<Track> tracks = new LinkedHashSet<>();
         Document doc = Jsoup.parse(top100Page.getPageSource());
         Elements units = doc.getElementsByAttributeValueStarting("name", "tracks-grid-browse_track_");
         if (units != null) {
@@ -32,7 +32,7 @@ public class JsoupTracksParser implements TracksParser {
         return tracks;
     }
 
-    public Track getTrackFromHTML(Element element)throws ParseException {
+    public final Track getTrackFromHTML(Element element)throws ParseException {
         Track track;
         String title = element.getElementsByClass("secondColumn").text();
         Element node = element.child(4);

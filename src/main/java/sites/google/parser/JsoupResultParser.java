@@ -13,7 +13,7 @@ import java.util.List;
 public class JsoupResultParser implements ResultParser{
 
     @Override
-    public List<WebLink> getResults(Page searchResultPage) {
+    public final List<WebLink> getResults(Page searchResultPage) {
         Document doc = Jsoup.parse(searchResultPage.getPageSource());
         List<WebLink> webLinks = new ArrayList<>();
         Elements elements = doc.select(ResultPageCSSLocators.WEB_LINK_LIST);

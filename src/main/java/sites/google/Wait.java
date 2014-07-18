@@ -8,7 +8,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import sites.google.parser.ResultPageCSSLocators;
 
 public class Wait {
-    private final int timeOutInSeconds = 30;
+    private static final int timeOutInSeconds = 30;
     private WebDriver webDriver;
 
     public Wait(WebDriver webDriver) {
@@ -19,7 +19,7 @@ public class Wait {
      * Wait until result page loaded using page position number
      * @param pagePosNumber
      */
-    public void waitResultPageLoaded(Integer pagePosNumber) {
+    public final void waitResultPageLoaded(Integer pagePosNumber) {
         new WebDriverWait(webDriver, timeOutInSeconds)
                 .until(ExpectedConditions.textToBePresentInElementLocated(
                         By.cssSelector(".cur"), pagePosNumber.toString()));
@@ -29,7 +29,7 @@ public class Wait {
     /**
      * Wait until result page loaded using result list presence.
      */
-    public void waitResultPageLoaded() {
+    public final void waitResultPageLoaded() {
         new WebDriverWait(webDriver, timeOutInSeconds)
                 .until(ExpectedConditions.presenceOfAllElementsLocatedBy(
                         By.cssSelector(ResultPageCSSLocators.WEB_LINK_LIST)));

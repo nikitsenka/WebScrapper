@@ -7,24 +7,22 @@ import api.Page;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-
 import java.util.NoSuchElementException;
 
 import static selenium.Utils.copyCurrentPage;
 import static selenium.Utils.getWebElement;
-import static selenium.Utils.waitWhileResultPageLoaded;
 
 
 public abstract class SeleniumForm implements Form {
-    protected WebDriver webDriver;
-    protected String submitButtonLocator;
+    private WebDriver webDriver;
+    private String submitButtonLocator;
     public SeleniumForm(WebDriver webDriver,String submitButtonLocator) {
         this.webDriver = webDriver;
         this.submitButtonLocator = submitButtonLocator;
     }
 
     @Override
-    public void setInput(String inputLocator, String value) {
+    public final void setInput(String inputLocator, String value) {
         WebElement formInput = getWebElement(webDriver,inputLocator);
         formInput.clear();
         formInput.sendKeys(value);
@@ -32,8 +30,8 @@ public abstract class SeleniumForm implements Form {
 
 
     @Override
-    public Page submit() {
-        WebElement submitButton = null;
+    public final Page submit() {
+        WebElement submitButton;
         try {
             submitButton = getWebElement(webDriver, submitButtonLocator);
         } catch (NoSuchElementException e) {
@@ -41,5 +39,9 @@ public abstract class SeleniumForm implements Form {
         }
         submitButton.submit();
         return copyCurrentPage(webDriver);
+    }
+
+    public final WebDriver getWebDriver() {
+        return webDriver;
     }
 }

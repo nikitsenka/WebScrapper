@@ -5,8 +5,6 @@ import api.ResultPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import selenium.InvalidWebDriverState;
 import selenium.PageImpl;
 import sites.google.parser.ResultPageCSSLocators;
@@ -17,7 +15,7 @@ import static selenium.Utils.copyCurrentPage;
 
 public class ResultPageImpl extends PageImpl implements ResultPage{
     private final WebDriver webDriver;
-    private final String nextButtonSelector = "#pnnext";
+    private static final String nextButtonSelector = "#pnnext";
 
     public ResultPageImpl(String title, String url, String pageSource,WebDriver webDriver) {
         super(title, url, pageSource);
@@ -29,17 +27,13 @@ public class ResultPageImpl extends PageImpl implements ResultPage{
         this.webDriver = webDriver;
     }
     @Override
-    public boolean hasNextPage() {
+    public final boolean hasNextPage() {
         List<WebElement> elements = webDriver.findElements(By.cssSelector(nextButtonSelector));
-        if (elements.size()!=0){
-            return true;
-        }else{
-            return false;
-        }
+        return elements.size()!=0;
     }
 
     @Override
-    public ResultPage getPageByPosNumber(Integer posNumber) throws InvalidWebDriverState {
+    public final ResultPage getPageByPosNumber(Integer posNumber) throws InvalidWebDriverState {
         if(isResultPage(webDriver)){
             List<WebElement> elements = webDriver.findElements(By.linkText(posNumber.toString()));
             if(elements.size()!=0){
@@ -55,13 +49,9 @@ public class ResultPageImpl extends PageImpl implements ResultPage{
         }
     }
     @Override
-    public boolean isResultPage(WebDriver webDriver) {
+    public final boolean isResultPage(WebDriver webDriver) {
         List<WebElement> elements = webDriver.findElements(By.cssSelector(ResultPageCSSLocators.WEB_LINK_LIST));
-        if(elements.size()!=0){
-            return true;
-        }else{
-            return false;
-        }
+        return elements.size()!=0;
     }
 
 }

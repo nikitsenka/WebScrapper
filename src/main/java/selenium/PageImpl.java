@@ -1,7 +1,5 @@
 package selenium;
 
-import org.openqa.selenium.WebDriver;
-
 public class PageImpl implements api.Page{
     private final String pageSource;
     private final String title;
@@ -14,21 +12,21 @@ public class PageImpl implements api.Page{
     }
 
     @Override
-    public String getTitle() {
+    public final String getTitle() {
         return title;
     }
 
     @Override
-    public String getUrl() {
+    public final String getUrl() {
         return url;
     }
     @Override
-    public String getPageSource() {
+    public final String getPageSource() {
         return pageSource;
     }
 
     @Override
-    public boolean equals(Object o) {
+    public final boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof PageImpl)) return false;
 
@@ -41,7 +39,7 @@ public class PageImpl implements api.Page{
     }
 
     @Override
-    public int hashCode() {
+    public final int hashCode() {
         int result = title.hashCode();
         result = 31 * result + url.hashCode();
         return result;

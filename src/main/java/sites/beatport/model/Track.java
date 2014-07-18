@@ -26,59 +26,59 @@ public class Track implements Serializable, Comparable {
     private String pictureUrl;
     private String label;
     private String genre;
-    private final static String CHAR_FILTER = "[^\\x00-\\x7F]";
+    private static final String CHAR_FILTER = "[^\\x00-\\x7F]";
     private static final long serialVersionUID = 42L;
 
     public Track() {
 
     }
 
-    public String getReleaseName() {
+    public final String getReleaseName() {
         return releaseName;
     }
 
-    public void setReleaseName(String releaseName) {
+    public final void setReleaseName(String releaseName) {
         this.releaseName = releaseName;
     }
 
-    public String getSecondArtist() {
+    public final String getSecondArtist() {
         return secondArtist;
     }
 
-    public void setSecondArtist(String secondArtist) {
+    public final void setSecondArtist(String secondArtist) {
         this.secondArtist = secondArtist;
     }
 
-    public String getPictureUrl() {
+    public final String getPictureUrl() {
         return pictureUrl;
     }
 
-    public void setPictureUrl(String pictureUrl) {
+    public final void setPictureUrl(String pictureUrl) {
         this.pictureUrl = pictureUrl;
     }
 
-    public String getLabel() {
+    public final String getLabel() {
         return label;
     }
 
-    public void setLabel(String label) {
+    public final void setLabel(String label) {
         this.label = label;
     }
 
-    public String getGenre() {
+    public final String getGenre() {
         return genre;
     }
 
-    public void setGenre(String genre) {
+    public final void setGenre(String genre) {
         this.genre = genre;
     }
 
-    public void setLastModifiedDate(Date lastModifiedDate) {
-        this.lastModifiedDate = lastModifiedDate;
+    public final void setLastModifiedDate(Date lastModifiedDate) {
+        this.lastModifiedDate = (Date) lastModifiedDate.clone();
     }
 
-    public Date getLastModifiedDate() {
-        return lastModifiedDate;
+    public final Date getLastModifiedDate() {
+        return (Date) lastModifiedDate.clone();
     }
 
     public Track(String title, String artist){
@@ -87,7 +87,7 @@ public class Track implements Serializable, Comparable {
     }
 
     @Override
-    public boolean equals(Object o) {
+    public final boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
@@ -101,29 +101,29 @@ public class Track implements Serializable, Comparable {
     }
 
     @Override
-    public int hashCode() {
+    public final int hashCode() {
         int result = title.hashCode();
         result = 31 * result + artist.hashCode();
         return result;
     }
 
-    public String getTitle() {
+    public final String getTitle() {
         return title;
 
     }
 
-    public void setTitle(String title) {
+    public final void setTitle(String title) {
         this.title = preprocessInput(title);
         if (this.title == null) {
             throw new IllegalArgumentException("Invalid Title name");
         }
     }
 
-    public String getArtist() {
+    public final String getArtist() {
         return artist;
     }
 
-    public void setArtist(String artist) throws IllegalArgumentException {
+    public final void setArtist(String artist) throws IllegalArgumentException {
         this.artist = preprocessInput(artist);
         if (this.artist == null) {
             throw new IllegalArgumentException("Invalid Artist name");
@@ -143,29 +143,29 @@ public class Track implements Serializable, Comparable {
     }
 
 
-    public Date getReleaseDate() {
-        return releaseDate;
+    public final Date getReleaseDate() {
+        return (Date) releaseDate.clone();
     }
 
-    public String getId() {
+    public final String getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public final void setId(String id) {
         this.id = id;
     }
 
     @Override
-    public int compareTo(Object o) {
+    public final int compareTo(Object o) {
         return artist.compareTo(((Track) o).artist);  //To change body of implemented methods use File | Settings | File Templates.
     }
 
-    public String getReleaseDateFormated() {
+    public final String getReleaseDateFormated() {
         SimpleDateFormat sdf = new SimpleDateFormat(DATE_FORMAT);
         return releaseDate != null ? sdf.format(releaseDate):"";
     }
 
-    public void setReleaseDate(String date_s) {
+    public final void setReleaseDate(String date_s) {
         SimpleDateFormat sdf = new SimpleDateFormat(DATE_FORMAT);
         try {
             releaseDate = sdf.parse(date_s);

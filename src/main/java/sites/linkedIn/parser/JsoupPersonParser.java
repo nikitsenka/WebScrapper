@@ -3,8 +3,8 @@ package sites.linkedIn.parser;
 import api.Page;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
-import org.jsoup.select.Elements;
 import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 import sites.linkedIn.model.Person;
 
 import java.util.ArrayList;
@@ -12,9 +12,9 @@ import java.util.List;
 
 public class JsoupPersonParser implements PersonParser {
     @Override
-    public List<Person> getPersonsDescription(Page searchResultPage){
+    public final List<Person> getPersonsDescription(Page searchResultPage){
         Document doc = Jsoup.parse(searchResultPage.getPageSource());
-        List<Person> persons = new ArrayList<Person>();
+        List<Person> persons = new ArrayList<>();
         Elements elements = doc.select("#results > li");
         if(elements.size() != 0 ){
             for(Element element: elements){

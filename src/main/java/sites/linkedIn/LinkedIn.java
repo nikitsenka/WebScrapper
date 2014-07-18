@@ -14,9 +14,8 @@ public class LinkedIn implements Site {
     private final String username;
     private final String pass;
     private WebDriver webDriver;
-    private final String url = "http://www.linkedin.com/";
-    private final String homePageUrl = "https://www.linkedin.com/nhome/?trk=";
-    private boolean isLogged = false;
+    private static final String url = "http://www.linkedin.com/";
+    private static final String homePageUrl = "https://www.linkedin.com/nhome/?trk=";
 
     public LinkedIn(WebDriver webDriver,String username, String pass) {
         this.webDriver = webDriver;
@@ -25,32 +24,30 @@ public class LinkedIn implements Site {
     }
 
     @Override
-    public boolean hasLoginPage() {
+    public final boolean hasLoginPage() {
         return true;
     }
     @Override
-    public String getHomePageUrl(){
+    public final String getHomePageUrl(){
         return homePageUrl;
     }
 
-    public String getUrl() {
+    public final String getUrl() {
         return url;
     }
 
-    public Page logIn() {
+    public final Page logIn() {
         webDriver.get(url);
         Form loginForm = new LoginForm(webDriver,username,pass);
-        Page page = loginForm.submit();
-        isLogged = true;
-        return page;
+        return loginForm.submit();
     }
 
-    public Page mainSearch(String query){
+    public final Page mainSearch(String query){
         logIn();
         SeleniumForm globalSeleniumForm = new GlobalSearchForm(webDriver,query);
         return globalSeleniumForm.submit();
     }
-    public List<Person> searchPeople(String query){
+    public final List<Person> searchPeople(String query){
         logIn();
         GlobalSearchForm globalSearchForm = new GlobalSearchForm(webDriver,query);
         globalSearchForm.setSearchType(GlobalSearchForm.SearchType.PEOPLE);

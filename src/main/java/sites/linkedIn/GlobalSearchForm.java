@@ -22,14 +22,14 @@ public class GlobalSearchForm extends SeleniumForm {
             return type;
         }
     }
-    private final String searchInputLocator = "#main-search-box";
+    private static final String searchInputLocator = "#main-search-box";
     public GlobalSearchForm(WebDriver webDriver,String searchStr) {
         super(webDriver,".search-button");
         setInput(searchInputLocator,searchStr);
     }
 
-    public void setSearchType(SearchType type){
-        WebElement webElement = getWebElement(webDriver, "#main-search-category > option."+type);
+    public final void setSearchType(SearchType type){
+        WebElement webElement = getWebElement(getWebDriver(), "#main-search-category > option."+type);
         webElement.click();
     }
 }

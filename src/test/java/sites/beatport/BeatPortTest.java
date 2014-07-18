@@ -3,16 +3,15 @@ package sites.beatport;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import sites.beatport.model.Track;
-import sites.google.model.WebLink;
 
 import java.util.Set;
 
 import static org.hamcrest.CoreMatchers.not;
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.text.IsEmptyString.isEmptyString;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
 import static sites.linkedIn.Utils.getWebDriver;
 
 public class BeatPortTest {
@@ -27,7 +26,7 @@ public class BeatPortTest {
 
     @Test
     public void testGetTracksFromDeepHouseTop100() throws Exception {
-        Set<Track> result = beatPort.getTracksFromDeepHouseTop100();
+        Set<Track> result = beatPort.getTracksFromDeepHouseTop100(100);
         assertTrue(result.size() != 0);
         for (Track track : result) {
             assertThat(track,notNullValue());

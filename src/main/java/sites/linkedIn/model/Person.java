@@ -11,7 +11,7 @@ public class Person {
     }
 
     @Override
-    public boolean equals(Object o) {
+    public final boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Person)) return false;
 
@@ -23,39 +23,39 @@ public class Person {
     }
 
     @Override
-    public int hashCode() {
+    public final int hashCode() {
         return name != null ? name.hashCode() : 0;
     }
 
-    public String getName() {
+    public final String getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public final void setName(String name) {
         this.name = name;
     }
 
-    public String getDescription() {
+    public final String getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public final void setDescription(String description) {
         this.description = description;
     }
 
-    public String getPictureUrl() {
+    public final String getPictureUrl() {
         return pictureUrl;
     }
 
-    public void setPictureUrl(String pictureUrl) {
+    public final void setPictureUrl(String pictureUrl) {
         this.pictureUrl = pictureUrl;
     }
 
-    public String getProfileUrl() {
+    public final String getProfileUrl() {
         return profileUrl;
     }
 
-    public void setProfileUrl(String profileUrl) {
+    public final void setProfileUrl(String profileUrl) {
         this.profileUrl = profileUrl;
     }
 }
