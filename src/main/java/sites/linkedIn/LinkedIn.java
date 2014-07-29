@@ -52,7 +52,7 @@ public class LinkedIn implements Site {
         GlobalSearchForm globalSearchForm = new GlobalSearchForm(webDriver,query);
         globalSearchForm.setSearchType(GlobalSearchForm.SearchType.PEOPLE);
         Page resultPage = globalSearchForm.submit();
-        return new JsoupPersonParser().getPersonsDescription(resultPage);
+        return new JsoupPersonParser(resultPage).getPersonsDescription();
     }
 
 }

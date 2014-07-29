@@ -6,5 +6,5 @@ import sites.linkedIn.model.Person;
 import java.util.List;
 
 public interface PersonParser {
-    List<Person> getPersonsDescription(Page page);
+    List<Person> getPersonsDescription();
 }

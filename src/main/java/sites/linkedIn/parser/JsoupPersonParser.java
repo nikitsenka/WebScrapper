@@ -6,13 +6,20 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import sites.linkedIn.model.Person;
+import sites.linkedIn.parser.PersonParser;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class JsoupPersonParser implements PersonParser {
+    Page searchResultPage;
+
+    public JsoupPersonParser(Page searchResultPage) {
+        this.searchResultPage = searchResultPage;
+    }
+
     @Override
-    public final List<Person> getPersonsDescription(Page searchResultPage){
+    public final List<Person> getPersonsDescription(){
         Document doc = Jsoup.parse(searchResultPage.getPageSource());
         List<Person> persons = new ArrayList<>();
         Elements elements = doc.select("#results > li");
