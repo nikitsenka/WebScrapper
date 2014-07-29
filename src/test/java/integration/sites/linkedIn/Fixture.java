@@ -1,4 +1,4 @@
-package sites.linkedIn;
+package integration.sites.linkedIn;
 
 public final class Fixture {
     //Set linkedIn test cridentials here

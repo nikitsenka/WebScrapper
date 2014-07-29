@@ -1,9 +1,12 @@
-package sites.linkedIn;
+package integration.sites.linkedIn;
 
 import api.Page;
+import integration.sites.IntegrationTest;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 import org.openqa.selenium.WebDriver;
+import sites.linkedIn.LinkedIn;
 import sites.linkedIn.model.Person;
 
 import java.util.List;
@@ -11,8 +14,8 @@ import java.util.List;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.StringContains.containsString;
 import static org.junit.Assert.assertThat;
-import static sites.linkedIn.Utils.getWebDriver;
-
+import static integration.sites.linkedIn.Utils.getWebDriver;
+@Category(IntegrationTest.class)
 public class LinkedInTest {
     private LinkedIn linkedIn;
 

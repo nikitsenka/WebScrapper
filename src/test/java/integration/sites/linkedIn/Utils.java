@@ -1,4 +1,4 @@
-package sites.linkedIn;
+package integration.sites.linkedIn;
 
 
 import org.openqa.selenium.WebDriver;

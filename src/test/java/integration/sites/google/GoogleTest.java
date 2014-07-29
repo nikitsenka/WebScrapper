@@ -1,9 +1,13 @@
-package sites.google;
+package integration.sites.google;
 
+import integration.sites.IntegrationTest;
+import integration.sites.linkedIn.Utils;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 import org.openqa.selenium.WebDriver;
 import selenium.InvalidWebDriverState;
+import sites.google.Google;
 import sites.google.model.WebLink;
 
 import java.util.List;
@@ -13,15 +17,14 @@ import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.text.IsEmptyString.isEmptyString;
 import static org.junit.Assert.assertThat;
-import static sites.linkedIn.Utils.getWebDriver;
-
+@Category(IntegrationTest.class)
 public class GoogleTest {
 
     private Google google;
 
     @Before
     public void setUp() throws Exception {
-        WebDriver driver = getWebDriver();
+        WebDriver driver = Utils.getWebDriver();
         google = new Google(driver);
     }
 

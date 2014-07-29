@@ -2,6 +2,9 @@ package sites.linkedIn.io;
 
 import org.junit.Before;
 import org.junit.Test;
+import sites.linkedIn.io.ExcelPersonRepository;
+import sites.linkedIn.io.InvalidInputData;
+import sites.linkedIn.io.PersonRepository;
 import sites.linkedIn.model.Person;
 
 import java.io.File;
@@ -11,12 +14,14 @@ import java.util.List;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
+import static utils.IoUtils.getFullPath;
 
 public class PersonRepositoryTest {
 
     @Test
     public void getAll() throws Exception {
-        PersonRepository personRepository = new ExcelPersonRepository(new File(getClass().getResource("/testRepositoryGetAll.xlsx").toURI().getPath()));
+        PersonRepository personRepository = new ExcelPersonRepository(new File(getFullPath("/testRepositoryGetAll.xlsx")));
+
         List<Person> result = personRepository.getAll();
         assertThat(result.size(), is(4));
         assertThat(result.get(0).getName(), is("name1"));
@@ -30,7 +35,7 @@ public class PersonRepositoryTest {
     }
     @Test
     public void addAll() throws URISyntaxException, InvalidInputData {
-        PersonRepository personRepository = new ExcelPersonRepository(new File(getClass().getResource("/testRepositoryAddAll.xlsx").toURI().getPath()));
+        PersonRepository personRepository = new ExcelPersonRepository(new File(getFullPath("/testRepositoryAddAll.xlsx")));
         Person person1 = new Person("testName1");
         person1.setDescription("testDescription1");
         Person person2 = new Person("testName2");
