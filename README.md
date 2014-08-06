@@ -1,6 +1,6 @@
 WebScrapper
 ===========
-The example of scrapping data from google, linkedin, beatport sites using Silenium webdriver. 
+The example of scrapping data from google, linkedin, beatport sites using Selenium webdriver. 
 
 The integration tests demonstrate code in action with Firefox driver.  
 
